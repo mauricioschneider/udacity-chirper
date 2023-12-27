@@ -3,7 +3,12 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ["standard", "plugin:react/recommended", "prettier"],
+  extends: [
+    "standard",
+    "plugin:react/jsx-runtime",
+    "plugin:react/recommended",
+    "prettier",
+  ],
   overrides: [
     {
       env: {
@@ -20,5 +25,5 @@ module.exports = {
     sourceType: "module",
   },
   plugins: ["react"],
-  rules: {},
+  rules: { "react/react-in-jsx-scope": "off" },
 };
