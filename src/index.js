@@ -5,8 +5,9 @@ import { Provider } from "react-redux";
 import reducer from "./reducers";
 import "./index.css";
 import App from "./components/App";
+import middleware from "./middleware";
 
-const store = configureStore({ reducer });
+const store = configureStore({ reducer, middleware });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
