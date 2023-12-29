@@ -31,17 +31,19 @@ const Tweet = (props) => {
     <div className="tweet">
       <img src={avatar} alt={`Avatar of {name}`} className="avatar" />
       <div className="tweet-info">
-        <span>{name}</span>
-        <div>{formatDate(timestamp)}</div>
-        {parent && (
-          <button
-            className="replying-to"
-            onClick={(e) => toParent(e, parent.id)}
-          >
-            Replying to @{parent.author}
-          </button>
-        )}
-        <p>{text}</p>
+        <div>
+          <span>{name}</span>
+          <div>{formatDate(timestamp)}</div>
+          {parent && (
+            <button
+              className="replying-to"
+              onClick={(e) => toParent(e, parent.id)}
+            >
+              Replying to @{parent.author}
+            </button>
+          )}
+          <p>{text}</p>
+        </div>
         <div className="tweet-icons">
           <TiArrowBackOutline className="tweet-icon" />
           <span>{replies !== 0 && replies}</span>
