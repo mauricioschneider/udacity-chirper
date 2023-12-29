@@ -1,0 +1,32 @@
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+
+const Dashboard = (props) => {
+  console.log(props);
+
+  return (
+    <div>
+      <h3 className="center">Your Timeline</h3>
+      <ul className="dashboard-list">
+        {props.tweetIds.map((id) => (
+          <li key={id}>
+            <div>TWEET ID {id}</div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+const mapStateToProps = ({ tweets }) => ({
+  tweetIds: Object.keys(tweets).sort(
+    (a, b) => tweets[b].timestamp - tweets[a].timestamp
+  ),
+});
+
+Dashboard.propTypes = {
+  tweetIds: PropTypes.array,
+  dispatch: PropTypes.func.isRequired,
+};
+
+export default connect(mapStateToProps)(Dashboard);

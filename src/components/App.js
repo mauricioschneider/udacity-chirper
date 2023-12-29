@@ -2,12 +2,13 @@ import { useEffect } from "react";
 import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
 import { handleInitialData } from "../actions/shared";
+import Dashboard from "./Dashboard";
 
 const App = (props) => {
   useEffect(() => {
     props.dispatch(handleInitialData());
   }, []);
-  return <div>Starter Code</div>;
+  return <Dashboard />;
 };
 
 App.propTypes = {
