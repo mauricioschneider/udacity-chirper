@@ -8,11 +8,16 @@ const App = (props) => {
   useEffect(() => {
     props.dispatch(handleInitialData());
   }, []);
-  return <Dashboard />;
+  return <div>{props.loading === true ? null : <Dashboard />}</div>;
 };
 
 App.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  loading: PropTypes.bool,
 };
 
-export default connect()(App);
+const mapStateToProps = ({ authedUser }) => ({
+  loading: authedUser === null,
+});
+
+export default connect(mapStateToProps)(App);
