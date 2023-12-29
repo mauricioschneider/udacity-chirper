@@ -1,17 +1,26 @@
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { formatTweet, formatDate } from "../utils/helpers";
 import {
   TiArrowBackOutline,
   TiHeartOutline,
   TiHeartFullOutline,
 } from "react-icons/ti";
+import { formatTweet, formatDate } from "../utils/helpers";
+import { handleToggleTweet } from "../actions/tweets";
 
 const Tweet = (props) => {
   const handleLike = (e) => {
     e.preventDefault();
 
-    // TODO handle like tweet
+    const { dispatch, tweet, authedUser } = props;
+
+    dispatch(
+      handleToggleTweet({
+        id: tweet.id,
+        authedUser,
+        hasLiked: tweet.hasLiked,
+      })
+    );
   };
 
   const toParent = (e, id) => {
@@ -77,6 +86,7 @@ Tweet.propTypes = {
   authedUser: PropTypes.string.isRequired,
   tweet: PropTypes.object,
   id: PropTypes.string.isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps)(Tweet);
