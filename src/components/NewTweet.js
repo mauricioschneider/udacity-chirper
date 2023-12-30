@@ -1,7 +1,9 @@
 import { connect } from "react-redux";
 import { useState } from "react";
+import PropTypes from "prop-types";
+import { handleAddTweet } from "../actions/tweets";
 
-const NewTweet = () => {
+const NewTweet = ({ dispatch, id }) => {
   const [text, setText] = useState("");
 
   const handleChange = (e) => {
@@ -13,8 +15,7 @@ const NewTweet = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Add tweet to the store
-    console.log("New Tweet: ", text);
+    dispatch(handleAddTweet({ text, id }));
 
     setText("");
   };
@@ -39,6 +40,11 @@ const NewTweet = () => {
       </form>
     </div>
   );
+};
+
+NewTweet.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  id: PropTypes.string,
 };
 
 export default connect()(NewTweet);
