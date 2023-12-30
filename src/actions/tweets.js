@@ -37,7 +37,7 @@ function addTweet(tweet) {
   return { type: ADD_TWEET, tweet };
 }
 
-export function handleAddTweet({ text, replyingTo }) {
+export function handleAddTweet(text, replyingTo) {
   return (dispatch, getState) => {
     const { authedUser } = getState();
 

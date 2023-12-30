@@ -15,7 +15,7 @@ const NewTweet = ({ dispatch, id }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(handleAddTweet({ text, id }));
+    dispatch(handleAddTweet(text, id));
 
     setText("");
   };
