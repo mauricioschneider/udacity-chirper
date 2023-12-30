@@ -2,8 +2,10 @@ import { connect } from "react-redux";
 import { useState } from "react";
 import PropTypes from "prop-types";
 import { handleAddTweet } from "../actions/tweets";
+import { useNavigate } from "react-router-dom";
 
 const NewTweet = ({ dispatch, id }) => {
+  const nagivate = useNavigate();
   const [text, setText] = useState("");
 
   const handleChange = (e) => {
@@ -18,6 +20,10 @@ const NewTweet = ({ dispatch, id }) => {
     dispatch(handleAddTweet(text, id));
 
     setText("");
+
+    if (!id) {
+      nagivate("/");
+    }
   };
 
   const tweetLeft = 280 - text.length;

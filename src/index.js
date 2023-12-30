@@ -6,12 +6,15 @@ import reducer from "./reducers";
 import "./index.css";
 import App from "./components/App";
 import middleware from "./middleware";
+import { BrowserRouter } from "react-router-dom";
 
 const store = configureStore({ reducer, middleware });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </Provider>
 );
